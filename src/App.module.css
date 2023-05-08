@@ -11,6 +11,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("../public/img/background-image-sunset.jpeg");
+  background-size: cover;
+  background-color: transparent;
 }
 
 code {

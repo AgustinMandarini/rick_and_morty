@@ -1,28 +1,25 @@
-import './App.css';
+import "./App.css";
 // import Card from './components/Card.jsx';
-import Cards from './components/Cards.jsx';
-import SearchBar from './components/SearchBar.jsx';
-import characters from './data.js';
+import Cards from "./components/Cards/Cards.jsx";
+import SearchBar from "./components/SearchBar/SearchBar.jsx";
+import characters from "./data.js";
+import style from "./App.module.css";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
-   return (
-      <div className='App'>
-         <SearchBar onSearch={
-            (characterID) => {
-               window.alert(characterID)}} />
-         <Cards characters={characters} />
-         {/* <Card
-            id={Rick.id}
-            name={Rick.name}
-            status={Rick.status}
-            species={Rick.species}
-            gender={Rick.gender}
-            origin={Rick.origin.name}
-            image={Rick.image}
-            onClose={() => window.alert('Emulamos que se cierra la card')}
-         /> */}
+  return (
+    <div>
+      <Navbar></Navbar>
+      <SearchBar
+        onSearch={(characterID) => {
+          window.alert(characterID);
+        }}
+      />
+      <div className={style.cardsContainer}>
+        <Cards characters={characters} />
       </div>
-   );
+    </div>
+  );
 }
 
 export default App;

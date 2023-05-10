@@ -1,12 +1,25 @@
 .container {
   border: 2px solid #67e606;
   border-radius: 20px;
+  background-color: beige;
   font-family: monospace;
-  display: grid;
-  place-items: center;
+  /* display: grid;
+  place-items: center; */
 }
 
 .img {
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
+}
+
+.button {
+  position: relative;
+  background-color: rgb(255, 47, 47);
+  bottom: 305px;
+  left: 278px;
+}
+
+.cardInfo {
+  position: relative;
+  left: 10px;
 }

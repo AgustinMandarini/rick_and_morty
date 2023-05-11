@@ -15,9 +15,7 @@ function App() {
           window.alert(characterID);
         }}
       />
-      <div className={style.cardsContainer}>
-        <Cards characters={characters} />
-      </div>
+      <Cards characters={characters} />
     </div>
   );
 }

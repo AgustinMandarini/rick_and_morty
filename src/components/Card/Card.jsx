@@ -4,10 +4,15 @@ export default function Card(props) {
   return (
     <div className={style.container}>
       <img className={style.img} src={props.image} alt="" />
-      <button className={style.button} onClick={props.onClose}>
+      <button
+        className={style.button}
+        onClick={(event) =>
+          props.onClose(props.id)
+        } /* De esta manera se evita que la funcion se ejecute instantaneamente 
+      y podemos pasarle el id que viene de Cards al padre App.js*/
+      >
         X
       </button>
-      {/* <h2>{props.id}</h2> */}
       <div className={style.cardInfo}>
         <h1>{props.name}</h1>
         <h2>Status: {props.status}</h2>

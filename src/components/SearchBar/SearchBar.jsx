@@ -21,6 +21,9 @@ export default function SearchBar(props) {
       <button className={style.button} onClick={(event) => props.onSearch(id)}>
         Agregar
       </button>
+      <button className={style.button} onClick={props.randomCard}>
+        Random
+      </button>
     </div>
   );
 }

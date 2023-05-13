@@ -8,18 +8,18 @@ function App() {
   const [characters, setCharacters] = React.useState([]);
 
   const onSearch = (id) => {
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
-      ({ data }) => {
+    axios(`https://rickandmortyapi.com/api/character/${id}`)
+      .then(({ data }) => {
         if (data.name) {
           const filteredChars = characters.filter(
             (char) => char.id !== data.id // filtra los id repetidos, compara id de estado con id requeridos
           );
           setCharacters([...filteredChars, data]); // resetea el estado de characters con los filtrados
-        } else {
-          window.alert("¡No hay personajes con este ID!");
         }
-      }
-    );
+      })
+      .catch((error) => {
+        if (error) window.alert("¡No hay personajes con este ID!");
+      });
   };
 
   const onClose = (id) => {
@@ -30,9 +30,14 @@ function App() {
     setCharacters(updatedCharacters);
   };
 
+  const randomCard = () => {
+    let id = Math.floor(Math.random() * (826 - 1) + 1).toString();
+    onSearch(id);
+  };
+
   return (
     <div>
-      <Nav onSearch={onSearch}></Nav>
+      <Nav onSearch={onSearch} randomCard={randomCard}></Nav>
       <Cards characters={characters} onClose={onClose} />
     </div>
   );

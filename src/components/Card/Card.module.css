@@ -1,5 +1,7 @@
 .container {
-  border: 2px solid #67e606;
+  /* width: 80%;
+  height: 80%; */
+  border: 3px solid #52ff42;
   border-radius: 20px;
   font-family: monospace;
   /* display: grid;
@@ -15,6 +17,7 @@
 .img {
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
+  width: 100%;
 }
 
 .button {

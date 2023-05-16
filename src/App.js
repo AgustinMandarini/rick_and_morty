@@ -1,8 +1,11 @@
 import React from "react";
-import Cards from "./components/Cards/Cards.jsx";
 // import style from "./App.module.css";
 import Nav from "./components/Nav/Nav.jsx";
+import About from "./views/About/About";
+import Home from "./views/Home/Home";
+import Detail from "./views/Detail/Detail";
 import axios from "axios";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [characters, setCharacters] = React.useState([]);
@@ -22,7 +25,7 @@ function App() {
       });
   };
 
-  const onClose = (id) => {
+  const closeCard = (id) => {
     const updatedCharacters = characters.filter(
       // Filtra los id de los elementos que son clickeados para cerrarse
       (char) => char.id !== Number(id)
@@ -36,11 +39,24 @@ function App() {
   };
 
   return (
-    <div>
-      <Nav onSearch={onSearch} randomCard={randomCard}></Nav>
-      <Cards characters={characters} onClose={onClose} />
-    </div>
+    <>
+      <Nav onSearch={onSearch} randomCard={randomCard} />
+      <Routes>
+        <Route
+          path="/"
+          element={<Home characters={characters} closeCard={closeCard} />}
+        ></Route>
+        <Route path="/about" element={<About />}></Route>
+        <Route path="/detail/:id" element={<Detail />}></Route>
+      </Routes>
+    </>
   );
+  // (
+  //   // <div>
+  //   //   <Nav onSearch={onSearch} randomCard={randomCard}></Nav>
+  //   //   <Cards characters={characters} closeCard={closeCard}></Cards>
+  //   // </div>
+  // );
 }
 
 export default App;

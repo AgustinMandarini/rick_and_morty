@@ -1,14 +1,12 @@
 @import "../../global.css";
 
 .container {
-  /* width: 80%;
-  height: 80%; */
+  /* width: 80%; */
+  height: 90%;
   border: 3px solid var(--border-color);
-  border-radius: 20px;
+  border-radius: 10px;
   font-family: monospace;
-  /* display: grid;
-  place-items: center; */
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 .container:hover {
   -webkit-box-shadow: 0px 0px 54px 1px rgba(0, 0, 0, 1);
@@ -24,20 +22,58 @@
 
 .button {
   position: relative;
+  bottom: 295px;
+  left: 260px;
   background-color: transparent;
   border-color: transparent;
   border-radius: 100%;
   font-size: 25px;
   font-weight: 900;
   text-shadow: 0px 0px 26px rgba(255, 255, 255, 1);
-  bottom: 295px;
-  left: 260px;
   cursor: pointer;
+}
+
+.characterName {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.895);
+  border-radius: 10px;
+  position: relative;
+  bottom: 17%;
+  left: 45px;
 }
 
 .cardInfo {
   width: 100%;
   position: relative;
+  bottom: 100px;
   left: 10px;
-  padding: 3px 30px 3px 30px;
+  padding: 0px 30px 3px 30px;
+}
+
+.statusAlive {
+  color: white;
+  background-color: green;
+  width: auto;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+  bottom: 285px;
+  right: 30px;
+}
+.statusDead {
+  color: white;
+  background-color: red;
+  width: auto;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+  bottom: 285px;
+  right: 30px;
+}
+
+h1 {
+  color: #0a4072;
 }

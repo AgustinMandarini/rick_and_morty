@@ -23,6 +23,7 @@
   border: 3px solid var(--border-color);
   border-radius: 20px;
   outline: none;
+  background-color: var(--button-bg-color);
   color: #00a64d;
   font-size: 20px;
 }

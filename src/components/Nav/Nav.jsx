@@ -11,10 +11,10 @@ export default function Navbar(props) {
       <div className={style.leftContainer}>
         <img src="/img/navLogo.png" alt="rick and morty logo" />
         <Link to="/about">
-          <span>| ABOUT |</span>
+          <span>|ABOUT|</span>
         </Link>
         <Link to="/">
-          <span>| HOME |</span>
+          <span>|HOME|</span>
         </Link>
       </div>
       {location.pathname === "/" ? (

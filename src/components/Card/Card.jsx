@@ -14,14 +14,19 @@ export default function Card(props) {
       >
         X
       </button>
-      <div className={style.cardInfo}>
-        <Link to={`/detail/${props.id}`}>
+      <span
+        className={
+          props.status === "Alive" ? style.statusAlive : style.statusDead
+        }
+      >
+        {props.status}
+      </span>
+      <Link to={`/detail/${props.id}`}>
+        <div className={style.characterName}>
           <h1>{props.name}</h1>
-        </Link>
-        <h2>Status: {props.status}</h2>
-        <h2>Species: {props.species}</h2>
-        <h2>Gender: {props.gender}</h2>
-      </div>
+        </div>
+      </Link>
+      <div className={style.cardInfo}></div>
     </div>
   );
 }

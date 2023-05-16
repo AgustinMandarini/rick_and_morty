@@ -37,7 +37,9 @@ const Detail = (props) => {
           </h2>
           <h2>
             Origin:{" "}
-            <span>{character.origin ? character.origin.name : null}</span>
+            <span className={style.span}>
+              {character.origin ? character.origin.name : null}
+            </span>
           </h2>
         </div>
       </div>

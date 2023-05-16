@@ -1,3 +1,5 @@
+@import "../../global.css";
+
 nav {
   background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
@@ -12,6 +14,27 @@ nav {
 }
 
 .leftContainer {
+  /* background-color: red; */
+  width: 60vw;
+  height: 10vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+div span {
+  margin: 10px;
+}
+span {
+  color: var(--border-color);
+  font-weight: 500;
+  @media screen and (max-width: 750px) {
+    width: 50%;
+    margin-right: 0px;
+  }
+}
+a {
+  text-decoration: none;
 }
 
 nav img {
@@ -20,5 +43,6 @@ nav img {
   margin: 15px;
   @media screen and (max-width: 750px) {
     width: 50%;
+    margin-left: -50px;
   }
 }

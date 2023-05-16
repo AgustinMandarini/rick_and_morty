@@ -51,12 +51,6 @@ function App() {
       </Routes>
     </>
   );
-  // (
-  //   // <div>
-  //   //   <Nav onSearch={onSearch} randomCard={randomCard}></Nav>
-  //   //   <Cards characters={characters} closeCard={closeCard}></Cards>
-  //   // </div>
-  // );
 }
 
 export default App;

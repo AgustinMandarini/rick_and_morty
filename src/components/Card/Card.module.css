@@ -1,7 +1,9 @@
+@import "../../global.css";
+
 .container {
   /* width: 80%;
   height: 80%; */
-  border: 3px solid #52ff42;
+  border: 3px solid var(--border-color);
   border-radius: 20px;
   font-family: monospace;
   /* display: grid;
@@ -22,10 +24,14 @@
 
 .button {
   position: relative;
-  color: white;
-  background-color: rgb(255, 47, 47);
-  bottom: 305px;
-  left: 278px;
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: 100%;
+  font-size: 25px;
+  font-weight: 900;
+  text-shadow: 0px 0px 26px rgba(255, 255, 255, 1);
+  bottom: 295px;
+  left: 260px;
   cursor: pointer;
 }
 

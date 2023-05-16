@@ -1,20 +1,25 @@
 import style from "./Nav.module.css";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function Navbar(props) {
+  const location = useLocation();
+
   return (
     <nav>
       <div className={style.leftContainer}>
         <img src="/img/navLogo.png" alt="rick and morty logo" />
         <Link to="/about">
-          <button>About</button>
+          <span>| ABOUT |</span>
         </Link>
         <Link to="/">
-          <button>Home</button>
+          <span>| HOME |</span>
         </Link>
       </div>
-      <SearchBar onSearch={props.onSearch} randomCard={props.randomCard} />
+      {location.pathname === "/" ? (
+        <SearchBar onSearch={props.onSearch} randomCard={props.randomCard} />
+      ) : null}{" "}
     </nav>
   );
 }

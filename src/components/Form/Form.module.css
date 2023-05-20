@@ -17,6 +17,10 @@
   background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 0px 0px 45px 24px var(--border-color);
   border-radius: 5px;
+
+  @media screen and (max-width: 700px) {
+    width: 80vw;
+  }
 }
 
 .inputContainer {
@@ -28,6 +32,9 @@
   flex-direction: column;
   align-self: center;
   justify-self: center;
+  @media screen and (max-width: 700px) {
+    margin-bottom: 40px;
+  }
 }
 
 .label {

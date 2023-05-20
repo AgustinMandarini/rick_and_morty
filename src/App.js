@@ -35,7 +35,7 @@ function App() {
 
   useEffect(() => {
     !access && navigate("/");
-  }, [access]);
+  }, [access, navigate]);
 
   const onSearch = (id) => {
     if (!/^\d+$/.test(id)) {

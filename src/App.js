@@ -28,6 +28,11 @@ function App() {
     }
   };
 
+  const loginAsGuest = () => {
+    setAccess(true);
+    navigate("/home");
+  };
+
   const logout = () => {
     setAccess(false);
     navigate("/");
@@ -86,7 +91,7 @@ function App() {
   return (
     <>
       {location.pathname === ROUTES.LOGIN ? (
-        <Form login={login} />
+        <Form login={login} loginAsGuest={loginAsGuest} />
       ) : (
         <Nav onSearch={onSearch} randomCard={randomCard} logout={logout} />
       )}

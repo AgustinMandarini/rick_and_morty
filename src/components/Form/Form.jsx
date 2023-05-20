@@ -32,7 +32,9 @@ const Form = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.login(userData);
+    event.nativeEvent.submitter.name === "loginButton"
+      ? props.login(userData)
+      : props.loginAsGuest();
   };
 
   return (
@@ -75,8 +77,12 @@ const Form = (props) => {
             </span>
           </div>
 
-          <button className={style.button}>Ingresar</button>
-          <button className={style.guestButton}>Ingresar como invitado</button>
+          <button className={style.button} name="loginButton">
+            Ingresar
+          </button>
+          <button className={style.guestButton} name="loginAsGuestButton">
+            Ingresar como invitado
+          </button>
         </div>
       </form>
     </div>

@@ -24,6 +24,9 @@ export default function SearchBar(props) {
       <button className={style.button} onClick={props.randomCard}>
         Random
       </button>
+      <button className={style.button} onClick={props.logout}>
+        Log Out
+      </button>
     </div>
   );
 }

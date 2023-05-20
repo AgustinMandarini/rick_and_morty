@@ -23,23 +23,20 @@ const Detail = (props) => {
   return (
     <div className={style.container}>
       <div className={style.content}>
-        <img className={style.img} src={character.image} alt="character" />
+        <img className={style.img} src={character?.image} alt="character" />
         <div>
           <h1>{character.name}</h1>
           <h2>
-            Status: <span className={style.span}>{character.status}</span>
+            Status: <span className={style.span}>{character?.status}</span>
           </h2>
           <h2>
-            Species: <span className={style.span}>{character.species}</span>
+            Species: <span className={style.span}>{character?.species}</span>
           </h2>
           <h2>
-            Gender: <span className={style.span}>{character.gender}</span>
+            Gender: <span className={style.span}>{character?.gender}</span>
           </h2>
           <h2>
-            Origin:{" "}
-            <span className={style.span}>
-              {character.origin ? character.origin.name : null}
-            </span>
+            Origin: <span className={style.span}>{character.origin?.name}</span>
           </h2>
         </div>
       </div>

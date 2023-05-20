@@ -2,6 +2,7 @@ import style from "./Nav.module.css";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { ROUTES } from "../../helpers/RoutesPath";
 
 export default function Navbar(props) {
   const location = useLocation();
@@ -10,15 +11,19 @@ export default function Navbar(props) {
     <nav>
       <div className={style.leftContainer}>
         <img src="/img/navLogo.png" alt="rick and morty logo" />
-        <Link to="/about">
+        <Link to={ROUTES.ABOUT}>
           <span>|ABOUT|</span>
         </Link>
-        <Link to="/">
+        <Link to={ROUTES.HOME}>
           <span>|HOME|</span>
         </Link>
       </div>
-      {location.pathname === "/" ? (
-        <SearchBar onSearch={props.onSearch} randomCard={props.randomCard} />
+      {location.pathname === ROUTES.HOME ? (
+        <SearchBar
+          onSearch={props.onSearch}
+          randomCard={props.randomCard}
+          logout={props.logout}
+        />
       ) : null}{" "}
     </nav>
   );

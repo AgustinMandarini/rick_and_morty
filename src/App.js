@@ -88,7 +88,7 @@ function App() {
       {location.pathname === ROUTES.LOGIN ? (
         <Form login={login} />
       ) : (
-        <Nav onSearch={onSearch} randomCard={randomCard} />
+        <Nav onSearch={onSearch} randomCard={randomCard} logout={logout} />
       )}
 
       <Routes>

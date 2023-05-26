@@ -5,21 +5,26 @@ import About from "./views/About/About";
 import Home from "./views/Home/Home";
 import Detail from "./views/Detail/Detail";
 import Form from "./components/Form/Form.jsx";
+import Favorites from "./components/Favorites/Favorites.jsx";
 import axios from "axios";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { ROUTES } from "./helpers/RoutesPath";
+import { useDispatch } from "react-redux";
+import { removeFav } from "./redux/actions/actions.js";
 
 function App() {
   const [characters, setCharacters] = React.useState([]);
 
-  const location = useLocation();
+  const location = useLocation(); // Devuelve un objeto que tiene una propiedad "pathname" que indica la ruta actual
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Llama directamente a la ruta especificada
 
   const [access, setAccess] = useState(false);
 
   const EMAIL = "ejemplo@gmail.com";
   const PASSWORD = "123456";
+
+  const dispatch = useDispatch(); // Permite "dispatchear" el estado global al componente o funcion donde este declarada
 
   const login = (userData) => {
     if (userData.password === PASSWORD && userData.email === EMAIL) {
@@ -81,6 +86,7 @@ function App() {
       (char) => char.id !== Number(id)
     );
     setCharacters(updatedCharacters);
+    dispatch(removeFav(id));
   };
 
   const randomCard = () => {
@@ -90,9 +96,7 @@ function App() {
 
   return (
     <>
-      {location.pathname === ROUTES.LOGIN ? (
-        <Form login={login} loginAsGuest={loginAsGuest} />
-      ) : (
+      {location.pathname !== ROUTES.LOGIN && (
         <Nav onSearch={onSearch} randomCard={randomCard} logout={logout} />
       )}
 
@@ -103,6 +107,14 @@ function App() {
         ></Route>
         <Route path={ROUTES.ABOUT} element={<About />}></Route>
         <Route path="/detail/:id" element={<Detail />}></Route>
+        <Route
+          path="/favorites"
+          element={<Favorites characters={characters} closeCard={closeCard} />}
+        ></Route>
+        <Route
+          path={ROUTES.LOGIN}
+          element={<Form login={login} loginAsGuest={loginAsGuest} />}
+        ></Route>
       </Routes>
     </>
   );

@@ -14,6 +14,9 @@ export default function Navbar(props) {
         <Link to={ROUTES.ABOUT}>
           <span>|ABOUT|</span>
         </Link>
+        <Link to={ROUTES.FAVORITES}>
+          <span>|FAVORITES|</span>
+        </Link>
         <Link to={ROUTES.HOME}>
           <span>|HOME|</span>
         </Link>

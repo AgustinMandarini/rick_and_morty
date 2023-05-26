@@ -1,10 +1,44 @@
 import { Link } from "react-router-dom";
 import style from "./Card.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { addFav, removeFav } from "../../redux/actions/actions";
 
 export default function Card(props) {
+  const [isFav, setIsFav] = useState(false);
+
+  const myFavorites = useSelector((state) => state.myFavorites);
+
+  const dispatch = useDispatch();
+
+  const handleFavorite = () => {
+    if (isFav) {
+      setIsFav(false);
+      dispatch(removeFav(props.id));
+    } else {
+      setIsFav(true);
+      dispatch(addFav(props.id));
+    }
+  };
+
+  // Sincroniza el estado local "isFav" con el global "myFavorites", para que al desmontar el componente y volver
+  // a montarlo posteriormente, no se pierda el estado.
+  useEffect(() => {
+    myFavorites.forEach((fav) => {
+      if (fav === props.id) {
+        setIsFav(true);
+      }
+    });
+  }, [myFavorites]);
+
   return (
     <div className={style.container}>
       <img className={style.img} src={props.image} alt="" />
+      {isFav ? (
+        <button onClick={handleFavorite}>❤️</button>
+      ) : (
+        <button onClick={handleFavorite}>🤍</button>
+      )}
       <button
         className={style.button}
         onClick={(event) =>

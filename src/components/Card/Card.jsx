@@ -7,7 +7,7 @@ import { addFav, removeFav } from "../../redux/actions/actions";
 export default function Card(props) {
   const [isFav, setIsFav] = useState(false);
 
-  const myFavorites = useSelector((state) => state.myFavorites);
+  const allCharacters = useSelector((state) => state.allCharacters);
 
   const dispatch = useDispatch();
 
@@ -17,19 +17,19 @@ export default function Card(props) {
       dispatch(removeFav(props.id));
     } else {
       setIsFav(true);
-      dispatch(addFav(props.id));
+      dispatch(addFav(props));
     }
   };
 
-  // Sincroniza el estado local "isFav" con el global "myFavorites", para que al desmontar el componente y volver
+  // Sincroniza el estado local "isFav" con el global "allCharacters", para que al desmontar el componente y volver
   // a montarlo posteriormente, no se pierda el estado.
   useEffect(() => {
-    myFavorites.forEach((fav) => {
-      if (fav === props.id) {
+    allCharacters.forEach((fav) => {
+      if (fav.id === props.id) {
         setIsFav(true);
       }
     });
-  }, [myFavorites]);
+  }, [allCharacters]);
 
   return (
     <div className={style.container}>

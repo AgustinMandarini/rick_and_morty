@@ -16,4 +16,4 @@ const orderCards = (order) => {
   return { type: ORDER_CARDS, payload: order };
 };
 
-export { addFav, removeFav };
+export { addFav, removeFav, filterCards, orderCards };

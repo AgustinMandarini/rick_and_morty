@@ -1,4 +1,10 @@
-import { ADD_FAV, FILTER_CARDS, REMOVE_FAV } from "./actions/types";
+import { act } from "react-dom/test-utils";
+import {
+  ADD_FAV,
+  FILTER_CARDS,
+  ORDER_CARDS,
+  REMOVE_FAV,
+} from "./actions/types";
 
 const initialState = {
   allCharacters: [],
@@ -8,23 +14,43 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_FAV:
+      const copy1 = state.allCharacters;
+      copy1.push(action.payload);
       return {
         ...state,
-        allCharacters: [...state.allCharacters, action.payload],
+        allCharacters: copy1,
+        myFavorites: copy1,
       };
 
     case REMOVE_FAV:
       return {
         ...state,
         allCharacters: state.allCharacters.filter(
-          (card) => card.id !== action.payload //A diferencia de la HW parte 1, aquie se compara card y no card.id
-        ), //porque myFavorites solo guarda los IDs de las cards
+          (card) => card.id !== action.payload
+        ),
       };
-    // case FILTER_CARDS:
-    //   return {
-    //     ...state,
-    //     myFavorites: state.allCharacters.filter((char) => char),
-    //   };
+    case FILTER_CARDS:
+      return {
+        ...state,
+        myFavorites: state.allCharacters.filter(
+          (char) => char.gender === action.payload
+        ),
+      };
+    case ORDER_CARDS:
+      let copy4 = state.allCharacters.sort((a, b) => {
+        if (action.payload === "A") {
+          return a.id - b.id;
+        } else if (action.payload === "D") {
+          return b.id - a.id;
+        } else {
+          return 0;
+        }
+      });
+      return {
+        ...state,
+        myFavorites: copy4,
+      };
+
     default:
       return { ...state };
   }

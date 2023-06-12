@@ -15,7 +15,10 @@ const server = http
       );
       if (matchedCharacter) {
         res.writeHead(200, { "Content-Type": "application/json" });
-        return res.end(JSON.stringify(matchedCharacter));
+        res.end(JSON.stringify(matchedCharacter));
+      } else {
+        res.writeHead(404, { "Content-Type": "text/plain" });
+        res.end(JSON.stringify({ message: "Character not found" }));
       }
     }
   })

@@ -63,7 +63,7 @@ function App() {
           }
         })
         .catch((error) => {
-          if (error) window.alert("¡No hay personajes con este ID!");
+          if (error) window.alert(error.response.data.message);
         });
     }
     axios(`http://localhost:3001/rickandmorty/character/${id}`)
@@ -76,14 +76,14 @@ function App() {
         }
       })
       .catch((error) => {
-        if (error) window.alert("¡No hay personajes con este ID!");
+        if (error) window.alert(error.response.data.message);
       });
   };
 
   const closeCard = (id) => {
     const updatedCharacters = characters.filter(
       // Filtra los id de los elementos que son clickeados para cerrarse
-      (char) => char.id !== Number(id)
+      (char) => char.id !== id
     );
     setCharacters(updatedCharacters);
     dispatch(removeFav(id));

@@ -1,8 +1,10 @@
+require("dotenv").config();
 const axios = require("axios");
+const { URL } = process.env;
 
 const getCharById = (id, res) => {
   let character = {};
-  axios(`https://rickandmortyapi.com/api/character/${id}`)
+  axios(`${URL}/${id}`)
     .then(({ data }) => {
       character = {
         id: id,

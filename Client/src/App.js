@@ -21,17 +21,17 @@ function App() {
 
   const [access, setAccess] = useState(false);
 
-  const EMAIL = "ejemplo@gmail.com";
-  const PASSWORD = "123456";
-
   const dispatch = useDispatch(); // Permite "dispatchear" el estado global al componente o funcion donde este declarada
 
-  const login = (userData) => {
-    if (userData.password === PASSWORD && userData.email === EMAIL) {
-      setAccess(true);
-      navigate("/home");
-    }
-  };
+  function login(userData) {
+    const { email, password } = userData;
+    const URL = "http://localhost:3001/rickandmorty/login/";
+    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+      const { access } = data;
+      setAccess(data);
+      access && navigate("/home");
+    });
+  }
 
   const loginAsGuest = () => {
     setAccess(true);

@@ -1,4 +1,3 @@
-import { act } from "react-dom/test-utils";
 import {
   ADD_FAV,
   FILTER_CARDS,
@@ -14,24 +13,27 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_FAV:
-      const copy1 = state.allCharacters;
-      copy1.push(action.payload);
       return {
         ...state,
-        allCharacters: copy1,
-        myFavorites: copy1,
+        myFavorites: action.payload,
+        allCharacters: action.payload,
       };
+    // case ADD_FAV:
+    //   const copy1 = state.allCharacters;
+    //   copy1.push(action.payload);
+    //   return {
+    //     ...state,
+    //     allCharacters: copy1,
+    //     myFavorites: copy1,
+    //   };
 
     case REMOVE_FAV:
-      const copy2 = state.allCharacters.filter(
-        (card) => card.id !== action.payload
-      );
-
       return {
         ...state,
-        allCharacters: copy2,
-        myFavorites: copy2,
+        allCharacters: action.payload,
+        myFavorites: action.payload,
       };
+
     case FILTER_CARDS:
       return {
         ...state,

@@ -3,28 +3,30 @@ const axios = require("axios");
 require("dotenv").config();
 const { URL } = process.env;
 
-const getCharById = (req, res) => {
-  const { id } = req.params;
-  axios(`${URL}/${id}`)
-    .then(({ data }) => {
-      character = {
-        id: id,
-        name: data.name,
-        gender: data.gender,
-        species: data.species,
-        origin: data.origin,
-        image: data.image,
-        status: data.status,
-      };
-      if (data) {
-        return res.json(character);
-      } else {
-        return res.status(404).send("Not found");
-      }
-    })
-    .catch((error) => {
-      return res.status(500).json(error.message);
-    });
+const getCharById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { data } = await axios(`${URL}/${id}`);
+    const character = {
+      id: id,
+      name: data.name,
+      gender: data.gender,
+      species: data.species,
+      origin: data.origin,
+      image: data.image,
+      status: data.status,
+    };
+
+    return data
+      ? res.status(200).json(character)
+      : res.status(404).json({ error: error.message });
+  } catch (error) {
+    return res.status(500).send("Not found");
+  }
+
+  // .catch((error) => {
+  //   return res.status(500).json(error.message);
+  // });
 };
 
 // const axios = require("axios");

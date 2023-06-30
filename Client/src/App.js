@@ -47,37 +47,40 @@ function App() {
     !access && navigate("/");
   }, [access, navigate]);
 
-  const onSearch = (id) => {
+  const onSearch = async (id) => {
     if (!/^\d+$/.test(id)) {
       // regex que niega numero, osea, si el string no contiene un numero
       let aux = id;
       id = "?name=" + aux; // Ej: ?name=rick , de esta forma la API busca por nombre
 
-      axios(`http://localhost:3001/rickandmorty/character/${id}`)
-        .then(({ data }) => {
-          if (data.results[0].name) {
-            const filteredChars = characters.filter(
-              (char) => char.id !== data.results[0].id // filtra los id repetidos, compara id de estado con id requeridos
-            );
-            setCharacters([...filteredChars, data.results[0]]); // resetea el estado de characters con los filtrados
-          }
-        })
-        .catch((error) => {
-          if (error) window.alert(error.response.data.message);
-        });
-    }
-    axios(`http://localhost:3001/rickandmorty/character/${id}`)
-      .then(({ data }) => {
-        if (data.name) {
+      const { data } = await axios(
+        `http://localhost:3001/rickandmorty/character/${id}`
+      );
+      try {
+        if (data.results[0].name) {
           const filteredChars = characters.filter(
-            (char) => char.id !== data.id // filtra los id repetidos, compara id de estado con id requeridos
+            (char) => char.id !== data.results[0].id // filtra los id repetidos, compara id de estado con id requeridos
           );
-          setCharacters([...filteredChars, data]); // resetea el estado de characters con los filtrados
+          setCharacters([...filteredChars, data.results[0]]); // resetea el estado de characters con los filtrados
         }
-      })
-      .catch((error) => {
+      } catch (error) {
         if (error) window.alert(error.response.data.message);
-      });
+      }
+    }
+
+    const { data } = await axios(
+      `http://localhost:3001/rickandmorty/character/${id}`
+    );
+    try {
+      if (data.name) {
+        const filteredChars = characters.filter(
+          (char) => char.id !== data.id // filtra los id repetidos, compara id de estado con id requeridos
+        );
+        setCharacters([...filteredChars, data]); // resetea el estado de characters con los filtrados
+      }
+    } catch (error) {
+      window.alert(error.response.data.message);
+    }
   };
 
   const closeCard = (id) => {

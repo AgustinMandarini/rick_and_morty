@@ -91,6 +91,7 @@ describe("Test de RUTAS", () => {
     });
     it("Elimina correctamente al personaje que contenga el ID", async () => {
       const { body } = await agent.delete("/rickandmorty/fav/241");
+      console.log(body);
       expect(body).not.toContainEqual(char1);
     });
   });

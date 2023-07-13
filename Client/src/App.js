@@ -26,11 +26,13 @@ function App() {
   function login(userData) {
     const { email, password } = userData;
     const URL = "http://localhost:3001/rickandmorty/login/";
-    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-      const { access } = data;
-      setAccess(data);
-      access && navigate("/home");
-    });
+    axios(URL + `?email=${email}&password=${password}`)
+      .then(({ data }) => {
+        const { access } = data;
+        setAccess(data);
+        access && navigate("/home");
+      })
+      .catch((err) => window.alert("Usuario o contraseña incorrectos"));
   }
 
   const loginAsGuest = () => {
@@ -53,10 +55,10 @@ function App() {
       let aux = id;
       id = "?name=" + aux; // Ej: ?name=rick , de esta forma la API busca por nombre
 
-      const { data } = await axios(
-        `http://localhost:3001/rickandmorty/character/${id}`
-      );
       try {
+        const { data } = await axios(
+          `http://localhost:3001/rickandmorty/character/${id}`
+        );
         if (data.results[0].name) {
           const filteredChars = characters.filter(
             (char) => char.id !== data.results[0].id // filtra los id repetidos, compara id de estado con id requeridos
@@ -64,22 +66,22 @@ function App() {
           setCharacters([...filteredChars, data.results[0]]); // resetea el estado de characters con los filtrados
         }
       } catch (error) {
-        if (error) window.alert(error.response.data.message);
+        if (error) window.alert(error);
       }
-    }
-
-    const { data } = await axios(
-      `http://localhost:3001/rickandmorty/character/${id}`
-    );
-    try {
-      if (data.name) {
-        const filteredChars = characters.filter(
-          (char) => char.id !== data.id // filtra los id repetidos, compara id de estado con id requeridos
+    } else {
+      try {
+        const { data } = await axios(
+          `http://localhost:3001/rickandmorty/character/${id}`
         );
-        setCharacters([...filteredChars, data]); // resetea el estado de characters con los filtrados
+        if (data.name) {
+          const filteredChars = characters.filter(
+            (char) => char.id !== data.id // filtra los id repetidos, compara id de estado con id requeridos
+          );
+          setCharacters([...filteredChars, data]); // resetea el estado de characters con los filtrados
+        }
+      } catch (error) {
+        window.alert("Nombre de usuario o id incorrectos");
       }
-    } catch (error) {
-      window.alert(error.response.data.message);
     }
   };
 

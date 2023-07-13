@@ -21,7 +21,7 @@ const removeFav = (id) => {
   return async (dispatch) => {
     const { data } = await axios.delete(endpoint);
     return dispatch({
-      type: "REMOVE_FAV",
+      type: REMOVE_FAV,
       payload: data,
     });
   };

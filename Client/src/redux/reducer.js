@@ -18,14 +18,6 @@ const rootReducer = (state = initialState, action) => {
         myFavorites: action.payload,
         allCharacters: action.payload,
       };
-    // case ADD_FAV:
-    //   const copy1 = state.allCharacters;
-    //   copy1.push(action.payload);
-    //   return {
-    //     ...state,
-    //     allCharacters: copy1,
-    //     myFavorites: copy1,
-    //   };
 
     case REMOVE_FAV:
       return {

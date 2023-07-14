@@ -1,16 +1,15 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import Nav from "./components/Nav/Nav.jsx";
-import About from "./views/About/About";
-import Home from "./views/Home/Home";
-import Detail from "./views/Detail/Detail";
-import Form from "./components/Form/Form.jsx";
-import Favorites from "./components/Favorites/Favorites.jsx";
 import axios from "axios";
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import { ROUTES } from "./helpers/RoutesPath";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import Favorites from "./components/Favorites/Favorites.jsx";
+import Form from "./components/Form/Form.jsx";
+import Nav from "./components/Nav/Nav.jsx";
+import { ROUTES } from "./helpers/RoutesPath";
 import { removeFav } from "./redux/actions/actions.js";
+import About from "./views/About/About";
+import Detail from "./views/Detail/Detail";
+import Home from "./views/Home/Home";
 
 function App() {
   const [characters, setCharacters] = React.useState([]);
@@ -114,7 +113,7 @@ function App() {
         <Route path="/detail/:id" element={<Detail />}></Route>
         <Route
           path="/favorites"
-          element={<Favorites characters={characters} closeCard={closeCard} />}
+          element={<Favorites closeCard={closeCard} />}
         ></Route>
         <Route
           path={ROUTES.LOGIN}

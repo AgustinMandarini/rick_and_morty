@@ -11,25 +11,34 @@ export default function Card(props) {
 
   const dispatch = useDispatch();
 
-  const handleFavorite = () => {
-    if (isFav) {
-      setIsFav(false);
-      dispatch(removeFav(props.id));
-    } else {
-      setIsFav(true);
-      dispatch(addFav(props));
-    }
-  };
-
-  // Sincroniza el estado local "isFav" con el global "allCharacters", para que al desmontar el componente y volver
-  // a montarlo posteriormente, no se pierda el estado.
   useEffect(() => {
     allCharacters.forEach((fav) => {
+      console.log("fav.id: " + fav.id);
+      console.log("props.id: " + props.id);
+      console.log(isFav);
       if (fav.id === props.id) {
         setIsFav(true);
       }
     });
   }, [allCharacters]);
+
+  const handleFavorite = () => {
+    isFav ? dispatch(removeFav(props.id)) : dispatch(addFav(props));
+    setIsFav(!isFav);
+  };
+
+  // const handleFavorite = () => {
+  //   if (isFav) {
+  //     setIsFav(false);
+  //     dispatch(removeFav(props.id));
+  //   } else {
+  //     setIsFav(true);
+  //     dispatch(addFav(props));
+  //   }
+  // };
+
+  // Sincroniza el estado local "isFav" con el global "allCharacters", para que al desmontar el componente y volver
+  // a montarlo posteriormente, no se pierda el estado.
 
   return (
     <div className={style.container}>

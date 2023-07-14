@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { filterCards, orderCards } from "../../redux/actions/actions.js";
 
-const Favorites = ({ characters, closeCard }) => {
+const Favorites = ({ closeCard }) => {
   const myFavorites = useSelector((state) => state.myFavorites);
 
   const dispatch = useDispatch();

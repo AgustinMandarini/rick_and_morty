@@ -12,6 +12,12 @@ import Detail from "./views/Detail/Detail";
 import Home from "./views/Home/Home";
 
 function App() {
+  // URL Dev:
+  // const URL = "http://localhost:3001/rickandmorty/login/";
+
+  // URL Prod:
+  const URL = "https://rickandmortyserver.onrender.com";
+
   const [characters, setCharacters] = React.useState([]);
 
   const location = useLocation(); // Devuelve un objeto que tiene una propiedad "pathname" que indica la ruta actual
@@ -24,7 +30,7 @@ function App() {
 
   function login(userData) {
     const { email, password } = userData;
-    const URL = "http://localhost:3001/rickandmorty/login/";
+
     axios(URL + `?email=${email}&password=${password}`)
       .then(({ data }) => {
         const { access } = data;

@@ -13,9 +13,6 @@ export default function Card(props) {
 
   useEffect(() => {
     allCharacters.forEach((fav) => {
-      console.log("fav.id: " + fav.id);
-      console.log("props.id: " + props.id);
-      console.log(isFav);
       if (fav.id === props.id) {
         setIsFav(true);
       }

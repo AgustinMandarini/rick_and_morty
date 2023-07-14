@@ -12,7 +12,7 @@ import Detail from "./views/Detail/Detail";
 import Home from "./views/Home/Home";
 
 require("dotenv").config();
-const { URL_PROD, URL_DEV } = process.env;
+const { URL_PROD } = process.env;
 
 function App() {
   const URL = URL_PROD;

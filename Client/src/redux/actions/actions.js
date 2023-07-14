@@ -2,7 +2,7 @@ import axios from "axios";
 import { ADD_FAV, REMOVE_FAV, FILTER_CARDS, ORDER_CARDS } from "./types";
 
 require("dotenv").config();
-const { URL_PROD, URL_DEV } = process.env;
+const { URL_PROD } = process.env;
 const URL = URL_PROD;
 
 // const addFav = (character) => {

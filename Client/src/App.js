@@ -13,10 +13,10 @@ import Home from "./views/Home/Home";
 
 function App() {
   // URL Dev:
-  // const URL = "http://localhost:3001/rickandmorty/login/";
+  // const URL = "http://localhost:3001/rickandmorty";
 
   // URL Prod:
-  const URL = "https://rickandmortyserver.onrender.com";
+  const URL = "https://rickandmortyserver.onrender.com/rickandmorty";
 
   const [characters, setCharacters] = React.useState([]);
 
@@ -31,7 +31,7 @@ function App() {
   function login(userData) {
     const { email, password } = userData;
 
-    axios(URL + `?email=${email}&password=${password}`)
+    axios(URL + `/login?email=${email}&password=${password}`)
       .then(({ data }) => {
         const { access } = data;
         setAccess(data);
@@ -61,9 +61,7 @@ function App() {
       id = "?name=" + aux; // Ej: ?name=rick , de esta forma la API busca por nombre
 
       try {
-        const { data } = await axios(
-          `http://localhost:3001/rickandmorty/character/${id}`
-        );
+        const { data } = await axios(`${URL}/character/${id}`);
         if (data.results[0].name) {
           const filteredChars = characters.filter(
             (char) => char.id !== data.results[0].id // filtra los id repetidos, compara id de estado con id requeridos
@@ -75,9 +73,7 @@ function App() {
       }
     } else {
       try {
-        const { data } = await axios(
-          `http://localhost:3001/rickandmorty/character/${id}`
-        );
+        const { data } = await axios(`${URL}/rickandmorty/character/${id}`);
         if (data.name) {
           const filteredChars = characters.filter(
             (char) => char.id !== data.id // filtra los id repetidos, compara id de estado con id requeridos

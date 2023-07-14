@@ -11,7 +11,9 @@ import About from "./views/About/About";
 import Detail from "./views/Detail/Detail";
 import Home from "./views/Home/Home";
 
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
+
 const { URL_PROD } = process.env;
 
 function App() {

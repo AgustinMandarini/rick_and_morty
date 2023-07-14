@@ -11,10 +11,7 @@ import About from "./views/About/About";
 import Detail from "./views/Detail/Detail";
 import Home from "./views/Home/Home";
 
-import dotenv from "dotenv";
-dotenv.config();
-
-const { URL_PROD } = process.env;
+import { URL_PROD, URL_DEV } from "./falseEnv.js";
 
 function App() {
   const URL = URL_PROD;

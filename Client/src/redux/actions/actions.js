@@ -1,10 +1,8 @@
 import axios from "axios";
 import { ADD_FAV, REMOVE_FAV, FILTER_CARDS, ORDER_CARDS } from "./types";
 
-import dotenv from "dotenv";
-dotenv.config();
+import { URL_PROD, URL_DEV } from "../../falseEnv";
 
-const { URL_PROD, URL_DEV } = process.env;
 const URL = URL_PROD;
 
 // const addFav = (character) => {

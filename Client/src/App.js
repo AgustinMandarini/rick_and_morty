@@ -16,7 +16,7 @@ function App() {
   // const URL = "http://localhost:3001/rickandmorty";
 
   // URL Prod:
-  const URL = "https://rickandmortyserver.onrender.com/rickandmorty";
+  const URL = "https://rickandmortyserver.onrender.com";
 
   const [characters, setCharacters] = React.useState([]);
 

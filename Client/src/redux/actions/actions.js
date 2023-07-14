@@ -1,12 +1,16 @@
 import axios from "axios";
 import { ADD_FAV, REMOVE_FAV, FILTER_CARDS, ORDER_CARDS } from "./types";
 
+require("dotenv").config();
+const { URL_PROD, URL_DEV } = process.env;
+const URL = URL_PROD;
+
 // const addFav = (character) => {
 //   return { type: ADD_FAV, payload: character };
 // };
 
 const addFav = (character) => {
-  const endpoint = "http://localhost:3001/rickandmorty/fav";
+  const endpoint = URL + "/rickandmorty/fav";
   return async (dispatch) => {
     const { data } = await axios.post(endpoint, character);
     return dispatch({
@@ -17,7 +21,7 @@ const addFav = (character) => {
 };
 
 const removeFav = (id) => {
-  const endpoint = "http://localhost:3001/rickandmorty/fav/" + id;
+  const endpoint = URL + "/rickandmorty/fav/" + id;
   return async (dispatch) => {
     const { data } = await axios.delete(endpoint);
     return dispatch({

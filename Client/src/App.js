@@ -11,12 +11,11 @@ import About from "./views/About/About";
 import Detail from "./views/Detail/Detail";
 import Home from "./views/Home/Home";
 
-function App() {
-  // URL Dev:
-  // const URL = "http://localhost:3001/rickandmorty";
+require("dotenv").config();
+const { URL_PROD, URL_DEV } = process.env;
 
-  // URL Prod:
-  const URL = "https://rickandmortyserver.onrender.com";
+function App() {
+  const URL = URL_PROD;
 
   const [characters, setCharacters] = React.useState([]);
 

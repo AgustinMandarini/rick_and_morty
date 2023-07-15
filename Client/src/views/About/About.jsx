@@ -19,8 +19,9 @@ const About = () => {
         </p>
         <h2>Sobre el creador: </h2>
         <p>
-          Soy estudiante de Desarrollo Web Full Stack del bootcam Henry, y este
-          es nuestro proyecto en desarrollo.
+          Mi nombre es Agustin Mandarini, soy estudiante de Desarrollo Web Full
+          Stack del bootcam Soy Henry, y este es nuestro primer proyecto de
+          desarrollo como estudiantes, que lo disfrutes!
         </p>
       </div>
     </div>
